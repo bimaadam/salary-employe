@@ -1,8 +1,8 @@
 <?php
- $pagedesc = "Data Absensi";
- include("sess_check.php");
- include("conf/format_tanggal.php");
- include("conf/format_rupiah.php");
+$pagedesc = "Data Absensi";
+include("sess_check.php");
+include("conf/format_tanggal.php");
+include("conf/format_rupiah.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +15,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?php echo $sysname;?> - <?php echo $pagedesc;?></title>
-  <link href="img/honda.jpg" rel="icon" type="images/x-icon">
+  <title><?php echo $sysname; ?> - <?php echo $pagedesc; ?></title>
+  <link href="img/.jpg" rel="icon" type="images/x-icon">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,9 +35,9 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-<?php
- include("sidebar.php");
-?>
+    <?php
+    include("sidebar.php");
+    ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -50,9 +50,9 @@
             <i class="fa fa-bars"></i>
           </button>
           <!-- Topbar Navbar -->
-<?php
- include("navbar.php");
-?>
+          <?php
+          include("navbar.php");
+          ?>
         </nav>
         <!-- End of Topbar -->
 
@@ -64,42 +64,42 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-				<a href="absensi_tambah.php" class="btn btn-success">Tambah</a>
+              <a href="absensi_tambah.php" class="btn btn-success">Tambah</a>
             </div>
-				<div class="row">
-					<div class="col-lg-12"><?php include("layout_alert.php"); ?></div>
-				</div>
+            <div class="row">
+              <div class="col-lg-12"><?php include("layout_alert.php"); ?></div>
+            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-				<thead align="center">
-					<tr>
-						<th width="1%">No</th>
-						<th width="10%">Bulan</th>
-						<th width="10%">Tahun</th>
-						<th width="5%">Opsi</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php
-					$i = 1;
-					$sql = "SELECT * FROM abs ORDER BY abs_id DESC";
-					$ress = mysqli_query($conn, $sql);
-					while($data = mysqli_fetch_array($ress)) {
-					echo '<tr>';
-					echo '<td class="text-center">'. $i .'</td>';
-					echo '<td class="text-left">'. $data['abs_bln'] .'</td>';
-					echo '<td class="text-left">'. $data['abs_th'] .'</td>';
-					echo '<td class="text-center">
-						<a href="absensi_lihat.php?abs='. $data['abs_id'] .'" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-edit"></i></a>';?>
-						<a href="absensi_hapus.php?abs=<?php echo $data['abs_id'];?>" onclick="return confirm('Apakah anda yakin akan menghapus data <?php echo $data['abs_bln']."-".$data['abs_th']?>?');" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td>
-					<?php
-					echo '</td>';
-					echo '</tr>';												
-					$i++;
-					}
-					?>
-				</tbody>
+                  <thead align="center">
+                    <tr>
+                      <th width="1%">No</th>
+                      <th width="10%">Bulan</th>
+                      <th width="10%">Tahun</th>
+                      <th width="5%">Opsi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $i = 1;
+                    $sql = "SELECT * FROM abs ORDER BY abs_id DESC";
+                    $ress = mysqli_query($conn, $sql);
+                    while ($data = mysqli_fetch_array($ress)) {
+                      echo '<tr>';
+                      echo '<td class="text-center">' . $i . '</td>';
+                      echo '<td class="text-left">' . $data['abs_bln'] . '</td>';
+                      echo '<td class="text-left">' . $data['abs_th'] . '</td>';
+                      echo '<td class="text-center">
+						<a href="absensi_lihat.php?abs=' . $data['abs_id'] . '" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-edit"></i></a>'; ?>
+                      <a href="absensi_hapus.php?abs=<?php echo $data['abs_id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data <?php echo $data['abs_bln'] . "-" . $data['abs_th'] ?>?');" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td>
+                    <?php
+                      echo '</td>';
+                      echo '</tr>';
+                      $i++;
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -108,24 +108,24 @@
         </div>
         <!-- /.container-fluid -->
 
-		<!-- Large modal -->
-			<div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-body">
-							<p>Sedang memproses…</p>
-						</div>
-					</div>
-				</div>
-			</div>    
+        <!-- Large modal -->
+        <div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Sedang memproses…</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-	  <?php 
-		include("layout_bottom.php");
-	  ?>
+      <?php
+      include("layout_bottom.php");
+      ?>
       <!-- End of Footer -->
 
     </div>
@@ -157,23 +157,22 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
 
-<script>
-		var app = {
-			code: '0'
-		};
-		
-		$('[data-load-id]').on('click',function(e) {
-					e.preventDefault();
-					var $this = $(this);
-					var code = $this.data('load-id');
-					if(code) {
-						$($this.data('remote-target')).load('karyawan_view.php?code='+code);
-						app.code = code;
-						
-					}
-		});		
+  <script>
+    var app = {
+      code: '0'
+    };
 
-</script>
+    $('[data-load-id]').on('click', function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      var code = $this.data('load-id');
+      if (code) {
+        $($this.data('remote-target')).load('karyawan_view.php?code=' + code);
+        app.code = code;
+
+      }
+    });
+  </script>
 </body>
 
 </html>

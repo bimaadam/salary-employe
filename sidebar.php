@@ -1,283 +1,187 @@
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<style>
+  .sidebar {
+    transition: all 0.4s ease-in-out;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+  }
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon">
-          <!-- <h6 class="">Admin Dashboard</h6> -->
-			<!-- <img src="img/honda.jpg" alt="brand" width="90" class="float-left image-brand"> -->
-        </div>
-       <div class="sidebar-brand-text mx-3">Admin Dashboard</div>
-      </a>
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Dashboard -->
-	  <?php
-		if($pagedesc == "Dashboard") {
-			$dsb = "active";
-		}else {
-			$dsb = "";
-		}
+  .nav-item .nav-link {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    color: #ecf0f1;
+  }
 
-		if($pagedesc == "Data Karyawan") {
-			$kr = "active";
-			$cl = "";
-			$sh = "show";
-		}else {
-			$kr = "";
-			$cl = "collapsed";
-			$sh = "";
-		}
+  .nav-item:hover .nav-link {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 1.5rem;
+    color: #1abc9c;
+  }
 
-		if($pagedesc == "Data Absensi") {
-			$ab = "active";
-			$clab = "";
-			$shab = "show";
-		}else {
-			$ab = "";
-			$clab = "collapsed";
-			$shab = "";
-		}
+  .nav-item .nav-link i {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
 
-		if($pagedesc == "Data Bagian") {
-			$ps = "active";
-			$clps = "";
-			$shps = "show";
-		}else {
-			$ps = "";
-			$clps = "collapsed";
-			$shps = "";
-		}
+  .nav-item:hover .nav-link i {
+    transform: rotate(-5deg) scale(1.1);
+    color: #1abc9c;
+  }
 
-		if($pagedesc == "Data Tunjangan") {
-			$jd = "active";
-			$cljd = "";
-			$shjd = "show";
-		}else {
-			$jd = "";
-			$cljd = "collapsed";
-			$shjd = "";
-		}
+  .sidebar-brand {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+  }
 
-		if($pagedesc == "Data Bonus") {
-			$bn = "active";
-			$clbn = "";
-			$shbn = "show";
-		}else {
-			$bn = "";
-			$clbn = "collapsed";
-			$shbn = "";
-		}
+  .sidebar-brand:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #1abc9c;
+  }
 
-		if($pagedesc == "Data Lembur") {
-			$lm = "active";
-			$cllm = "";
-			$shlm = "show";
-		}else {
-			$lm = "";
-			$cllm = "collapsed";
-			$shlm = "";
-		}
+  .collapse-inner a {
+    transition: all 0.2s ease-in-out;
+  }
 
-		if($pagedesc == "Data Kasbon") {
-			$ks = "active";
-			$clks = "";
-			$shks = "show";
-		}else {
-			$ks = "";
-			$clks = "collapsed";
-			$shks = "";
-		}
+  .collapse-inner a:hover {
+    color: #16a085;
+    padding-left: 8px;
+    font-weight: 500;
+  }
 
-		if($pagedesc == "Data Potongan") {
-			$pt = "active";
-			$clpt = "";
-			$shpt = "show";
-		}else {
-			$pt = "";
-			$clpt = "collapsed";
-			$shpt = "";
-		}
+  .collapse.show {
+    animation: fadeInDown 0.3s ease-in-out;
+  }
 
-		if($pagedesc == "Data Gaji") {
-			$gj = "active";
-			$clgj = "";
-			$shgj = "show";
-		}else {
-			$gj = "";
-			$clgj = "collapsed";
-			$shgj = "";
-		}
-		
-		if($pagedesc == "Data Akun") {
-			$ak = "active";
-			$clak = "";
-			$shak = "show";
-		}else {
-			$ak = "";
-			$clak = "collapsed";
-			$shak = "";
-		}
-		
-		if($pagedesc == "Data Jurnal") {
-			$jr = "active";
-			$cljr = "";
-			$shjr = "show";
-		}else {
-			$jr = "";
-			$cljr = "collapsed";
-			$shjr = "";
-		}
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
 
-		if($pagedesc == "Jurnal Gaji") {
-			$jg = "active";
-			$cljg = "";
-			$shjg = "show";
-		}else {
-			$jg = "";
-			$cljg = "collapsed";
-			$shjg = "";
-		}
-		?>
-      <li class="nav-item <?php echo $dsb;?>">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $kr;?>">
-        <a class="nav-link <?php echo $cl;?>" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Karyawan</span>
-        </a>
-        <div id="collapseTwo" class="collapse <?php echo $sh;?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $kr;?>" href="karyawan.php">Data Karyawan</a>
-          </div>
-        </div>
-      </li>
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $ab;?>">
-        <a class="nav-link <?php echo $clab;?>" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-          <i class="fas fa-fw fa-book"></i>
-          <span>Absensi</span>
-        </a>
-        <div id="collapseThree" class="collapse <?php echo $shab;?>" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $ab;?>" href="absensi.php">Data Absensi</a>
-          </div>
-        </div>
-      </li>
+  #sidebarToggle {
+    background-color: #1abc9c;
+    transition: background-color 0.3s;
+  }
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $ps;?>">
-        <a class="nav-link <?php echo $clps;?>" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-          <i class="fas fa-fw fa-signal"></i>
-          <span>Bagian</span>
-        </a>
-        <div id="collapseFour" class="collapse <?php echo $shps;?>" aria-labelledby="headingFour" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $ps;?>" href="bagian.php">Data Bagian</a>
-          </div>
-        </div>
-      </li>
+  #sidebarToggle:hover {
+    background-color: #16a085;
+  }
+</style>
+<!-- badgePro -->
+<style>
+  .badge-basic {
+    background-color: #3498db;
+    color: white;
+    font-size: 0.6rem;
+    margin-left: 6px;
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $jd;?>">
-        <a class="nav-link <?php echo $cljd;?>" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>Tunjangan</span>
-        </a>
-        <div id="collapseFive" class="collapse <?php echo $shjd;?>" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $jd;?>" href="tunjangan.php">Data Tunjangan</a>
-          </div>
-        </div>
-      </li>
-      
-	  <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $lm;?>">
-        <a class="nav-link <?php echo $cllm;?>" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-          <i class="fas fa-fw fa-clock"></i>
-          <span>Lembur</span>
-        </a>
-        <div id="collapseSeven" class="collapse <?php echo $shlm;?>" aria-labelledby="headingSeven" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $lm;?>" href="lembur.php">Data Lembur</a>
-          </div>
-        </div>
-      </li>
-	  	  
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $pt;?>">
-        <a class="nav-link <?php echo $clpt;?>" href="#" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
-          <i class="fas fa-fw fa-cut"></i>
-          <span>Potongan</span>
-        </a>
-        <div id="collapseNine" class="collapse <?php echo $shpt;?>" aria-labelledby="headingNine" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $pt;?>" href="potongan.php">Data Potongan</a>
-          </div>
-        </div>
-      </li>
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $gj;?>">
-        <a class="nav-link <?php echo $clgj;?>" href="#" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
-          <i class="fas fa-fw fa-money-bill-alt"></i>
-          <span>Gaji</span>
-        </a>
-        <div id="collapseTen" class="collapse <?php echo $shgj;?>" aria-labelledby="headingTen" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $gj;?>" href="gaji.php">Data Gaji</a>
-          </div>
-        </div>
-      </li>
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $ak;?>">
-        <a class="nav-link <?php echo $clak;?>" href="#" data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapse11">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Akun</span>
-        </a>
-        <div id="collapse11" class="collapse <?php echo $shak;?>" aria-labelledby="heading11" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $ak;?>" href="akun.php">Data Akun</a>
-          </div>
-        </div>
-      </li>
-	  
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $jr;?>">
-        <a class="nav-link <?php echo $cljr;?>" href="#" data-toggle="collapse" data-target="#collapse12" aria-expanded="true" aria-controls="collapse12">
-          <i class="fas fa-fw fa-file"></i>
-          <span>Jurnal</span>
-        </a>
-        <div id="collapse12" class="collapse <?php echo $shjr;?>" aria-labelledby="heading12" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $jr;?>" href="jurnal.php">Data Jurnal</a>
-          </div>
-        </div>
-      </li>
-	  
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item <?php echo $jg;?>">
-        <a class="nav-link <?php echo $cljg;?>" href="#" data-toggle="collapse" data-target="#collapse13" aria-expanded="true" aria-controls="collapse13">
-          <i class="fas fa-fw fa-archive"></i>
-          <span>Jurnal Gaji</span>
-        </a>
-        <div id="collapse13" class="collapse <?php echo $shjg;?>" aria-labelledby="heading13" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?php echo $jg;?>" href="jurnalgaji.php">Jurnal Gaji</a>
-          </div>
-        </div>
-      </li>
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+  .badge-pro {
+    background-color: #e67e22;
+    color: white;
+    font-size: 0.6rem;
+    margin-left: 6px;
+    padding: 2px 5px;
+    border-radius: 5px;
+  }
+</style>
 
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <div class="sidebar-brand-text mx-3">Admin Dashboard</div>
+  </a>
+  <hr class="sidebar-divider my-0">
+
+  <?php
+  function badge($type)
+  {
+    if ($type == 'basic') return '<span class="badge-basic">Basic</span>';
+    else return '<span class="badge-pro">PRO</span>';
+  }
+  ?>
+
+  <li class="nav-item <?php echo $dsb; ?>">
+    <a class="nav-link" href="index.php">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard <?= badge('basic') ?></span>
+    </a>
+  </li>
+
+  <li class="nav-item <?php echo $kr; ?>">
+    <a class="nav-link <?php echo $cl; ?>" href="#" data-toggle="collapse" data-target="#collapseTwo">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Karyawan <?= badge('basic') ?></span>
+    </a>
+    <div id="collapseTwo" class="collapse <?php echo $sh; ?>">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item <?php echo $kr; ?>" href="karyawan.php">Data Karyawan</a>
       </div>
+    </div>
+  </li>
 
-    </ul>
-    <!-- End of Sidebar -->
+  <li class="nav-item <?php echo $ab; ?>">
+    <a class="nav-link <?php echo $clab; ?>" href="#" data-toggle="collapse" data-target="#collapseThree">
+      <i class="fas fa-fw fa-book"></i>
+      <span>Absensi <?= badge('basic') ?></span>
+    </a>
+    <div id="collapseThree" class="collapse <?php echo $shab; ?>">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item <?php echo $ab; ?>" href="absensi.php">Data Absensi</a>
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item <?php echo $ps; ?>">
+    <a class="nav-link <?php echo $clps; ?>" href="#" data-toggle="collapse" data-target="#collapseFour">
+      <i class="fas fa-fw fa-signal"></i>
+      <span>Bagian <?= badge('basic') ?></span>
+    </a>
+    <div id="collapseFour" class="collapse <?php echo $shps; ?>">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item <?php echo $ps; ?>" href="bagian.php">Data Bagian</a>
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item <?php echo $pt; ?>">
+    <a class="nav-link <?php echo $clpt; ?>" href="#" data-toggle="collapse" data-target="#collapseNine">
+      <i class="fas fa-fw fa-cut"></i>
+      <span>Potongan <?= badge('basic') ?></span>
+    </a>
+    <div id="collapseNine" class="collapse <?php echo $shpt; ?>">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item <?php echo $pt; ?>" href="potongan.php">Data Potongan</a>
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item <?php echo $gj; ?>">
+    <a class="nav-link <?php echo $clgj; ?>" href="#" data-toggle="collapse" data-target="#collapseTen">
+      <i class="fas fa-fw fa-money-bill-alt"></i>
+      <span>Gaji <?= badge('basic') ?></span>
+    </a>
+    <div id="collapseTen" class="collapse <?php echo $shgj; ?>">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item <?php echo $gj; ?>" href="gaji.php">Data Gaji</a>
+      </div>
+    </div>
+  </li>
+
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+</ul>
+<!-- End of Sidebar -->

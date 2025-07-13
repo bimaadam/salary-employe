@@ -1,8 +1,8 @@
 <?php
- $pagedesc = "Data Potongan";
- include("sess_check.php");
- include("conf/format_tanggal.php");
- include("conf/format_rupiah.php");
+$pagedesc = "Data Potongan";
+include("sess_check.php");
+include("conf/format_tanggal.php");
+include("conf/format_rupiah.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +15,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?php echo $sysname;?> - <?php echo $pagedesc;?></title>
-  <link href="img/honda.jpg" rel="icon" type="images/x-icon">
+  <title><?php echo $sysname; ?> - <?php echo $pagedesc; ?></title>
+  <link href="img/.jpg" rel="icon" type="images/x-icon">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,9 +35,9 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-<?php
- include("sidebar.php");
-?>
+    <?php
+    include("sidebar.php");
+    ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -50,9 +50,9 @@
             <i class="fa fa-bars"></i>
           </button>
           <!-- Topbar Navbar -->
-<?php
- include("navbar.php");
-?>
+          <?php
+          include("navbar.php");
+          ?>
         </nav>
         <!-- End of Topbar -->
 
@@ -64,50 +64,50 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-				<a href="potongan_tambah.php" class="btn btn-success">Tambah</a>
+              <a href="potongan_tambah.php" class="btn btn-success">Tambah</a>
             </div>
-				<div class="row">
-					<div class="col-lg-12"><?php include("layout_alert.php"); ?></div>
-				</div>
+            <div class="row">
+              <div class="col-lg-12"><?php include("layout_alert.php"); ?></div>
+            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-				<thead align="center">
-					<tr>
-						<th width="1%">No</th>
-						<th width="10%">ID Karyawan</th>
-						<th width="10%">Nama</th>
-						<th width="10%">Tanggal</th>
-						<th width="10%">Jumlah</th>
-						<th width="10%">Keterangan</th>
-						<th width="5%">Opsi</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php
-					$i = 1;
-					$sql = "SELECT potongan.*, karyawan.* FROM potongan, karyawan 
+                  <thead align="center">
+                    <tr>
+                      <th width="1%">No</th>
+                      <th width="10%">ID Karyawan</th>
+                      <th width="10%">Nama</th>
+                      <th width="10%">Tanggal</th>
+                      <th width="10%">Jumlah</th>
+                      <th width="10%">Keterangan</th>
+                      <th width="5%">Opsi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $i = 1;
+                    $sql = "SELECT potongan.*, karyawan.* FROM potongan, karyawan 
 							WHERE karyawan.karyawan_id=potongan.karyawan_id AND karyawan.karyawan_status='Aktif'
 							ORDER BY potongan.pot_tgl DESC";
-					$ress = mysqli_query($conn, $sql);
-					while($data = mysqli_fetch_array($ress)) {
-						echo '<tr>';
-						echo '<td class="text-center">'. $i .'</td>';
-						echo '<td class="text-left">'. $data['karyawan_id'] .'</td>';
-						echo '<td class="text-left">'. $data['karyawan_nama'] .'</td>';
-						echo '<td class="text-center">'. format_tanggal($data['pot_tgl']) .'</td>';
-						echo '<td class="text-left">'. format_rupiah($data['pot_jml']) .'</td>';
-						echo '<td class="text-left">'. $data['pot_ket'] .'</td>';
-						echo '<td class="text-center">
-								<a href="potongan_edit.php?pot='. $data['pot_id'] .'" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-edit"></i></a>';?>
-								<a href="potongan_hapus.php?pot=<?php echo $data['pot_id'];?>" onclick="return confirm('Apakah anda yakin akan menghapus potongan <?php echo $data['karyawan_nama'];?>?');" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td>
-						<?php
-						echo '</td>';
-						echo '</tr>';												
-						$i++;
-						}
-						?>
-				</tbody>
+                    $ress = mysqli_query($conn, $sql);
+                    while ($data = mysqli_fetch_array($ress)) {
+                      echo '<tr>';
+                      echo '<td class="text-center">' . $i . '</td>';
+                      echo '<td class="text-left">' . $data['karyawan_id'] . '</td>';
+                      echo '<td class="text-left">' . $data['karyawan_nama'] . '</td>';
+                      echo '<td class="text-center">' . format_tanggal($data['pot_tgl']) . '</td>';
+                      echo '<td class="text-left">' . format_rupiah($data['pot_jml']) . '</td>';
+                      echo '<td class="text-left">' . $data['pot_ket'] . '</td>';
+                      echo '<td class="text-center">
+								<a href="potongan_edit.php?pot=' . $data['pot_id'] . '" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-edit"></i></a>'; ?>
+                      <a href="potongan_hapus.php?pot=<?php echo $data['pot_id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus potongan <?php echo $data['karyawan_nama']; ?>?');" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td>
+                    <?php
+                      echo '</td>';
+                      echo '</tr>';
+                      $i++;
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -116,24 +116,24 @@
         </div>
         <!-- /.container-fluid -->
 
-		<!-- Large modal -->
-			<div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-body">
-							<p>Sedang memproses…</p>
-						</div>
-					</div>
-				</div>
-			</div>    
+        <!-- Large modal -->
+        <div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Sedang memproses…</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-	  <?php 
-		include("layout_bottom.php");
-	  ?>
+      <?php
+      include("layout_bottom.php");
+      ?>
       <!-- End of Footer -->
 
     </div>
@@ -165,23 +165,22 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
 
-<script>
-		var app = {
-			code: '0'
-		};
-		
-		$('[data-load-id]').on('click',function(e) {
-					e.preventDefault();
-					var $this = $(this);
-					var code = $this.data('load-id');
-					if(code) {
-						$($this.data('remote-target')).load('karyawan_view.php?code='+code);
-						app.code = code;
-						
-					}
-		});		
+  <script>
+    var app = {
+      code: '0'
+    };
 
-</script>
+    $('[data-load-id]').on('click', function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      var code = $this.data('load-id');
+      if (code) {
+        $($this.data('remote-target')).load('karyawan_view.php?code=' + code);
+        app.code = code;
+
+      }
+    });
+  </script>
 </body>
 
 </html>

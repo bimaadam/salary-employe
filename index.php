@@ -1,25 +1,26 @@
 <?php
-	include("sess_check.php");
-	$pagedesc = "Dashboard";
+include("sess_check.php");
+$pagedesc = "Dashboard";
 
-	$sqlkry = "SELECT * FROM karyawan WHERE karyawan_status='Aktif'";
-	$resskry = mysqli_query($conn, $sqlkry);
-	$kry = mysqli_num_rows($resskry);
+$sqlkry = "SELECT * FROM karyawan WHERE karyawan_status='Aktif'";
+$resskry = mysqli_query($conn, $sqlkry);
+$kry = mysqli_num_rows($resskry);
 
-	$sqlapp = "SELECT * FROM gaji_karyawan WHERE gaj_stt='Approved'";
-	$ressapp = mysqli_query($conn, $sqlapp);
-	$app = mysqli_num_rows($ressapp);
+$sqlapp = "SELECT * FROM gaji_karyawan WHERE gaj_stt='Approved'";
+$ressapp = mysqli_query($conn, $sqlapp);
+$app = mysqli_num_rows($ressapp);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title><?php echo $sysname;?> - <?php echo $pagedesc;?></title>
+  <title><?php echo $sysname; ?> - <?php echo $pagedesc; ?></title>
   <!-- <link href="img/honda.jpg" rel="icon" type="images/x-icon"> -->
 
   <!-- Custom fonts for this template-->
@@ -28,15 +29,35 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      border-radius: 1rem;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #111;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #141e30, #243b55) !important;
+    }
+  </style>
+
 
 </head>
 
 <body id="page-top">
   <!-- Page Wrapper -->
   <div id="wrapper">
-<?php
- include("sidebar.php");
-?>
+    <?php
+    include("sidebar.php");
+    ?>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
@@ -47,9 +68,9 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-<?php
- include("navbar.php");
-?>
+          <?php
+          include("navbar.php");
+          ?>
 
         </nav>
         <!-- End of Topbar -->
@@ -71,8 +92,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="karyawan.php">Jumlah Karyawan</a></div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $kry;?></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <a href="karyawan.php">Jumlah Pegawai Aktif</a>
+                      </div>
+
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $kry; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -89,7 +113,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="gaji.php">Gaji Approved</a></div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $app;?></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $app; ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -99,18 +123,18 @@
               </div>
             </div>
 
-			
+
           </div>
         </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
-	  
+
       <!-- <footer class="text-gray-800 text-center">Web By Rinbim.dev</footer> -->
-	  <?php 
-		include("layout_bottom.php");
-	  ?>
+      <?php
+      include("layout_bottom.php");
+      ?>
 
     </div>
     <!-- End of Content Wrapper -->
