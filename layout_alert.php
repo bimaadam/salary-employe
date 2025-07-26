@@ -12,6 +12,18 @@
 		echo "Maaf, nama pengguna tidak ditemukan.";
 		echo '</div>';
 	}
+	elseif(isset($_GET['login']) && $_GET['login'] == "out") {
+		echo '<div class="alert alert-success alert-dismissable">';
+		echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+		echo "Anda telah berhasil logout dari sistem.";
+		echo '</div>';
+	}
+	elseif(isset($_GET['login']) && $_GET['login'] == "false") {
+		echo '<div class="alert alert-warning alert-dismissable">';
+		echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+		echo "Silakan login terlebih dahulu untuk mengakses sistem.";
+		echo '</div>';
+	}
 
 	// insert message
 	if(isset($_GET['act']) && $_GET['act'] == "add" && $_GET['msg'] == "success") {

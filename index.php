@@ -21,7 +21,6 @@ $app = mysqli_num_rows($ressapp);
   <meta name="description" content="">
   <meta name="author" content="">
   <title><?php echo $sysname; ?> - <?php echo $pagedesc; ?></title>
-  <!-- <link href="img/honda.jpg" rel="icon" type="images/x-icon"> -->
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -155,13 +154,6 @@ $app = mysqli_num_rows($ressapp);
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
